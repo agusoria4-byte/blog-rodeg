@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+@import "tailwindcss";
+
+/* :root { ... el resto sigue igual ... } */
+/* 3. Tus variables originales */
+:root {
+    --color-blue: #172dad;
+    --color-orange: #f76507;
+    --color-black: #111112;
+    --color-white: #faf9f8;
+    --color-gray-light: #e5e5e5;
+    
+    --font-light: 300;
+    --font-regular: 400;
+}
+
+/* 4. Tu reset original */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-weight: var(--font-light);
+    background-color: var(--color-white);
+    color: var(--color-black);
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; 
+}
+main { flex-grow: 1; }
+a { text-decoration: none; }
+ul { list-style: none; }
+
+/* 5. Tus botones originales */
+.btn {
+    border: none;
+    border-radius: 50px;
+    padding: 10px 24px;
+    font-family: inherit;
+    font-weight: var(--font-regular);
+    cursor: pointer;
+    transition: opacity 0.3s, transform 0.2s;
+    color: var(--color-white);
+}
+.btn:hover { opacity: 0.9; transform: translateY(-2px); }
+.btn-blue { background-color: var(--color-blue); }
+.btn-orange { background-color: var(--color-orange); }
+.btn-full { width: 100%; text-align: center; font-size: 1.1rem; padding: 14px 30px; }

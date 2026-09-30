@@ -1,0 +1,590 @@
+---
+// 1. Primero el global (Tailwind + Variables + Letra)
+import '../styles/global.css';
+
+// 2. Después tus componentes para que "pisen" cualquier estilo de Tailwind
+import '../styles/header.css';
+import '../styles/footer.css';
+
+const { title = "Actualidad - Rodeg" } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{title}</title>
+    
+    <!-- IMPORTANTE: Si en tu Vite tenés links a Google Fonts o algún CSS global extra, agregalos acá -->
+</head>
+<body class="bg-[#faf8f5] text-gray-800">
+
+    <!-- ================= HEADER ================= -->
+    <header>
+        <button class="hamburger-btn" id="hamburger-btn" aria-label="Abrir menú">
+            <svg viewBox="0 0 24 24" width="30" height="30" fill="var(--color-black)">
+                <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+            </svg>
+        </button>
+    
+        <a href="http://localhost:4173/" class="logo"><img src="/img/global/logo-rodeg.png" alt="Rodeg logo"></a>
+        
+        <div class="header-content" id="header-content">
+            
+            <div class="mobile-search-container">
+                <div class="search-pill" style="border: 1px solid var(--color-gray-light); width: 100%; justify-content: space-between;">
+                    <input type="text" placeholder="Buscar..." class="search-input" style="display: block; width: 100%;">
+                    <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+                </div>
+            </div>
+    
+            <div class="mobile-back-bar" id="mobile-back-bar">
+                <button class="btn-back" id="btn-back">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="var(--color-blue)"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+                    <span id="back-text">Volver</span>
+                </button>
+            </div>
+    
+            <nav class="nav-container">
+                <ul class="nav-list">
+                    
+                    <li class="nav-item">
+                        <span class="nav-link">Soluciones <span class="arrow-mobile">›</span></span>
+                        
+                        <div class="mega-menu menu-soluciones mega-3-cols">
+                            <div class="mega-col-1">
+                                <a href="/productos/ordeno/equipos-completos/index.html" class="mega-cat-btn active" data-target="panel-ordeno">1. Ordeño <span class="arrow">›</span></a>
+                                <a href="/productos/bretes/" class="mega-cat-btn" data-target="panel-bretes">2. Bretes para sala <span class="arrow">›</span></a>
+                                <a href="/productos/manejo-y-corrales-de-rodeo/" class="mega-cat-btn" data-target="panel-manejo">3. Manejo y corrales <span class="arrow">›</span></a>
+                                <a href="/productos/enfriadores-de-leche/index.html" class="mega-cat-btn" data-target="panel-enfriadores">4. Enfriadores de leche <span class="arrow">›</span></a>
+                                <a href="/productos/alimentacion-ordeno/" class="mega-cat-btn" data-target="panel-alim-ordeno">5. Alimentación ordeño <span class="arrow">›</span></a>
+                                <a href="/productos/alimentacion-terneros/" class="mega-cat-btn" data-target="panel-alim-terneros">6. Alimentación terneros <span class="arrow">›</span></a>
+                                <a href="/productos/confort-animal/" class="mega-cat-btn" data-target="panel-confort">7. Confort animal <span class="arrow">›</span></a>
+                                <a href="/productos/pasteurizadores/" class="mega-cat-btn" data-target="panel-pasteurizadores">8. Pasteurizadores <span class="arrow">›</span></a>
+                                <a href="/categorias.html" class="view-all-link">Ver todo el catálogo →</a>
+                            </div>
+    
+                            <div class="mega-col-content">
+                                <div class="mega-panel active" id="panel-ordeno">
+                                    <div class="mega-col-2">
+                                        <a href="/productos/ordeno/equipos-completos/" class="mega-subcat-btn active" data-target="list-equipos">Equipos Completos <span class="arrow">›</span></a>
+                                        <a href="/productos/ordeno/sistemas-y-repuestos/" class="mega-subcat-btn" data-target="list-sistemas">Sistema, Accesorios... <span class="arrow">›</span></a>
+                                    </div>
+                                    <div class="mega-col-3">
+                                        <ul class="mega-list active" id="list-equipos">
+                                            <li><a href="/productos/ordeno/equipos-completos/millenium-magna/index.html">Millenium Magna</a></li>
+                                            <li><a href="/productos/ordeno/equipos-completos/millenium/index.html">Millenium</a></li>
+                                            <li><a href="/productos/ordeno/equipos-completos/mp2700/index.html">MP 2700</a></li>
+                                            <li><a href="/productos/ordeno/equipos-completos/mp2000/index.html">MP 2000</a></li>
+                                            <li><a href="/productos/ordeno/equipos-completos/dtp/index.html">Directo al tarro portátil (DTP)</a></li>
+                                            <li><a href="/productos/ordeno/equipos-completos/dte/index.html">Directo al tarro estacionario (DTE)</a></li>
+                                            <li><a href="/productos/ordeno/equipos-completos/cabras-y-ovejas/index.html">Máquinas ordeñadoras para cabras y ovejas</a></li>
+                                        </ul>
+                                        <ul class="mega-list list-2-cols" id="list-sistemas">
+                                            <li><a href="/productos/ordeno/sistemas-y-repuestos/grupo-de-ordeño-r-max/index.html">Grupo de ordeño R-Max</a></li>
+                                            <li><a href="/productos/ordeno/sistemas-y-repuestos/grupo-de-ordeño-pz-3/index.html">Grupo de ordeño PZ-3</a></li>
+                                            <li><a href="/productos/ordeno/sistemas-y-repuestos/pulsador-rg3/index.html">Pulsador RG-3</a></li>
+                                            <li><a href="/productos/ordeno/sistemas-y-repuestos/pulmones-de-vacio/index.html">Pulmones de vacio</a></li>
+                                            <li><a href="/productos/ordeno/sistemas-y-repuestos/regulacion-de-vacio/index.html">Regulación de vacío</a></li>
+                                            <li><a href="/productos/ordeno/sistemas-y-repuestos/bombas-de-vacio/index.html">Bombas de vacío</a></li>
+                                            <li><a href="/productos/ordeno/sistemas-y-repuestos/electrobombas-centrifugas/index.html">Electrobombas Centrífugas</a></li>
+                                            <li><a href="/productos/ordeno/sistemas-y-repuestos/conjunto-generador-de-vacio/index.html">Conjunto generador de vacío</a></li>
+                                            <li><a href="/productos/ordeno/sistemas-y-repuestos/controles-de-nivel/index.html">Controles de nivel</a></li>                                        
+                                            <li><a href="/productos/ordeno/sistemas-y-repuestos/unidades-finales/index.html">Unidades finales</a></li>
+                                            <li><a href="/productos/ordeno/sistemas-y-repuestos/intercambiadores-de-calor/index.html">Intercambiadores de calor</a></li>
+                                            <li><a href="/productos/ordeno/sistemas-y-repuestos/ordenador-individual/index.html">Ordeñador individual de cuartos</a></li>                   
+                                            <li><a href="/productos/ordeno/sistemas-y-repuestos/lavados-programables/index.html">Lavados programables</a></li>
+                                            <li><a href="/productos/ordeno/sistemas-y-repuestos/brazo-de-posicionamiento-m18/index.html">Brazos de posicionamiento M-18</a></li>
+                                            <li><a href="/productos/ordeno/sistemas-y-repuestos/global-flow-control/index.html">Global Flow Control</a></li>
+                                            <li><a href="/productos/ordeno/sistemas-y-repuestos/extractor-automatico-cra4g/index.html">Extractor automático de pezoneras CRA-4G</a></li>
+                                            <li><a href="/productos/ordeno/sistemas-y-repuestos/pezoneras/index.html">Pezoneras (Millenium, PZ3, PZ-R MAX)</a></li>
+                                            <li><a href="/productos/ordeno/sistemas-y-repuestos/mangueras-y-tubos/index.html">Mangueras, Tubos lácteos y de lavado</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+    
+                                <div class="mega-panel" id="panel-bretes">
+                                    <div class="mega-col-2">
+                                        <a href="/productos/bretes/#a-la-par" class="mega-subcat-btn active" data-target="list-bretes-par">Bretes a la par <span class="arrow">›</span></a>
+                                        <a href="/productos/bretes/#espina-vertical" class="mega-subcat-btn" data-target="list-bretes-espina">Bretes espina vertical <span class="arrow">›</span></a>
+                                        <a href="/productos/bretes/#salida-rapida" class="mega-subcat-btn" data-target="list-bretes-rapida">Bretes salida rápida <span class="arrow">›</span></a>
+                                        <a href="/productos/bretes/#otros" class="mega-subcat-btn" data-target="list-bretes-otros">Otros bretes <span class="arrow">›</span></a>
+                                    </div>
+                                    <div class="mega-col-3">
+                                        <ul class="mega-list active" id="list-bretes-par">
+                                            <li><a href="/productos/bretes/a-la-par/salida-retroceso/index.html">Salida en retroceso</a></li>
+                                            <li><a href="/productos/bretes/a-la-par/salida-lateral/index.html">Salida lateral</a></li>
+                                        </ul>
+                                        <ul class="mega-list" id="list-bretes-espina">
+                                            <li><a href="/productos/bretes/espina-vertical/arcos-piso/index.html">Arcos a piso</a></li>
+                                            <li><a href="/productos/bretes/espina-vertical/autoportante/index.html">Autoportante</a></li>
+                                        </ul>
+                                        <ul class="mega-list" id="list-bretes-rapida">
+                                            <li><a href="/productos/bretes/#lado-lado">Brete Lado x Lado</a></li>
+                                            <li><a href="/productos/bretes/#arcos-piso-rapida">Arcos a piso</a></li>
+                                            <li><a href="/productos/bretes/#autoportante-rapida">Autoportante</a></li>
+                                        </ul>
+                                        <ul class="mega-list" id="list-bretes-otros">
+                                            <li><a href="/productos/bretes/#bretes-autoportantes">Bretes autoportantes</a></li>
+                                            <li><a href="/productos/bretes/#bretes-cabras">Bretes cabras y ovejas</a></li>
+                                            <li><a href="/productos/bretes/chapon-anti-bosteo/index.html">Chapón anti-bosteo</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+    
+                                <div class="mega-panel" id="panel-manejo">
+                                    <div class="mega-col-2">
+                                        <a href="/productos/manejo-y-corrales-de-rodeo/manejo-y-corrales-de-rodeo/index.html" class="mega-subcat-btn active" data-target="list-corrales">Corrales<span class="arrow">›</span></a>
+                                        <a href="/productos/manejo-y-corrales-de-rodeo/#cepos" class="mega-subcat-btn" data-target="list-cepos">Cepos y Mangas <span class="arrow">›</span></a>
+                                        <a href="/productos/manejo-y-corrales-de-rodeo/tranqueras-arreadoras/" class="mega-subcat-btn" data-target="list-tranqueras">Tranqueras y Estabulados <span class="arrow">›</span></a>
+                                    </div>
+                                    <div class="mega-col-3">
+                                        <ul class="mega-list active" id="list-corrales">
+                                            <li><a href="/productos/manejo-y-corrales-de-rodeo/corrales-de-espera/index.html">Corral de espera</a></li>
+                                            <li><a href="/productos/manejo-y-corrales-de-rodeo/corrales-circulares/index.html">Corrales circulares</a></li>
+                                            <li><a href="/productos/manejo-y-corrales-de-rodeo/corrales-perimetrales/index.html">Corrales perimetrales</a></li>
+                                            <li><a href="/productos/manejo-y-corrales-de-rodeo/puertas/index.html">Puertas apartadoras</a></li>
+                                        </ul>
+                                        <ul class="mega-list" id="list-cepos">
+                                            <li><a href="/productos/manejo-y-corrales-de-rodeo/#cepos-corrales">Cepos para mangas y corrales</a></li>
+                                            <li><a href="/productos/manejo-y-corrales-de-rodeo/#manga">Manga de inseminación</a></li>
+                                            <li><a href="/productos/manejo-y-corrales-de-rodeo/#balanza">Balanza y apartado (Gestión Milk)</a></li>
+                                        </ul>
+                                        <ul class="mega-list" id="list-tranqueras">
+                                            <li><a href="/productos/manejo-y-corrales-de-rodeo/tranqueras-arreadoras/#tranqueras-manuales">Tranqueras arreadoras manuales</a></li>
+                                            <li><a href="/productos/manejo-y-corrales-de-rodeo/tranqueras-arreadoras/#tranqueras-automaticas">Tranqueras arreadoras automáticas</a></li>
+                                            <li><a href="/productos/manejo-y-corrales-de-rodeo/#estabulados">Sistemas de estabulados (Camas)</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+    
+                                <div class="mega-panel" id="panel-enfriadores">
+                                    <div class="mega-col-2">
+                                        <a href="/productos/enfriadores-de-leche/cubas/" class="mega-subcat-btn active" data-target="list-cubas">Cubas <span class="arrow">›</span></a>
+                                        <a href="/productos/enfriadores-de-leche/" class="mega-subcat-btn" data-target="list-sistemas-frio">Sistemas y Silos <span class="arrow">›</span></a>
+                                    </div>
+    
+                                    <div class="mega-col-3">
+                                        <ul class="mega-list active" id="list-cubas">
+                                            <li><a href="/productos/enfriadores-de-leche/cubas/cerradas/index.html">Cerradas (Tipo cisterna 4.000L a 30.000L)</a></li>
+                                            <li><a href="/productos/enfriadores-de-leche/cubas/abiertas/index.html">Abiertas</a></li>
+                                        </ul>
+                                        <ul class="mega-list" id="list-sistemas-frio">
+                                            <li><a href="/productos/enfriadores-de-leche/comando-de-frio-y-lavado-automatico/index.html">Sistema de comando de frío y lavado</a></li>
+                                            <li><a href="/productos/enfriadores-de-leche/recuperador-de-calor/index.html">Recuperadores de calor</a></li>
+                                            <li><a href="/productos/enfriadores-de-leche/silos-de-almacenamiento/index.html">Silos para almacenamiento</a></li>
+                                            <li><a href="/productos/enfriadores-de-leche/sistema-de-enfriamiento-instantaneo/index.html">Sistema de enfriamiento instantáneo</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+    
+                                <div class="mega-panel" id="panel-alim-ordeno">
+                                    <div class="mega-col-2">
+                                        <a href="/productos/alimentacion-ordeno/" class="mega-subcat-btn active" data-target="list-alim-ordeno">Sistemas de alimentación <span class="arrow">›</span></a>
+                                    </div>
+                                    <div class="mega-col-3">
+                                        <ul class="mega-list active" id="list-alim-ordeno">
+                                            <li><a href="/productos/alimentacion-ordeno/#manuales">Racionadores manuales</a></li>
+                                            <li><a href="/productos/alimentacion-ordeno/#automatica">Sistema de llenado y dosificación automática</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+    
+                                <div class="mega-panel" id="panel-alim-terneros">
+                                    <div class="mega-col-2">
+                                        <a href="/productos/alimentacion-terneros/" class="mega-subcat-btn active" data-target="list-taxi-milk">Taxi Milk <span class="arrow">›</span></a>
+                                        <a href="/productos/alimentacion-terneros/" class="mega-subcat-btn" data-target="list-carros">Carros de transporte <span class="arrow">›</span></a>
+                                    </div>
+                                    <div class="mega-col-3">
+                                        <ul class="mega-list active" id="list-taxi-milk">
+                                            <li><a href="/productos/alimentacion-terneros/taxi-manual/index.html">Manual eléctrico (280L)</a></li>
+                                            <li><a href="/productos/alimentacion-terneros/taxi-arrastre/index.html">De arrastre eléctrico (280L)</a></li>
+                                            <li><a href="/productos/alimentacion-terneros/taxi-autopropulsado/index.html">Autopropulsado eléctrico (280L)</a></li>
+                                            <li><a href="/productos/alimentacion-terneros/sistema-de-dosificacion/index.html">Sistema de dosificación de leche</a></li>
+                                        </ul>
+                                        <ul class="mega-list" id="list-carros">
+                                            <li><a href="/productos/alimentacion-terneros/carros-de-transporte-de-leche/index.html">Carros de transporte de leche (500L a 3.000L)</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+    
+                                <div class="mega-panel" id="panel-confort">
+                                    <div class="mega-col-2">
+                                        <a href="/productos/confort-animal/" class="mega-subcat-btn active" data-target="list-confort">Equipos de confort <span class="arrow">›</span></a>
+                                    </div>
+                                    <div class="mega-col-3">
+                                        <ul class="mega-list active" id="list-confort">
+                                            <li><a href="/productos/confort-animal/r-fan/index.html">Ventiladores R-FAN</a></li>
+                                            <li><a href="/productos/confort-animal/sistema-antiestres/index.html">Sistema anti-estrés</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+    
+                                <div class="mega-panel" id="panel-pasteurizadores">
+                                    <div class="mega-col-2">
+                                        <a href="/productos/pasteurizadores/#tina" class="mega-subcat-btn active" data-target="list-past-tina">Pasteurizador de tina <span class="arrow">›</span></a>
+                                        <a href="/productos/pasteurizadores/#placas" class="mega-subcat-btn" data-target="list-past-placas">Pasteurizador a placas <span class="arrow">›</span></a>
+                                    </div>
+                                    <div class="mega-col-3">
+                                        <ul class="mega-list active" id="list-past-tina">
+                                            <li><a href="/productos/pasteurizadores/#tina-electrico">Eléctrico</a></li>
+                                            <li><a href="/productos/pasteurizadores/#tina-caldera">A caldera</a></li>
+                                        </ul>
+                                        <ul class="mega-list" id="list-past-placas">
+                                            <li><a href="/productos/pasteurizadores/#placas-semiautomatico">Semiautomático</a></li>
+                                            <li><a href="/productos/pasteurizadores/#placas-automatico">Automático</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+    
+                   <li class="nav-item">
+                       <a href="/productos/nuevas-tecnologias/index.html" class="nav-link blue-text">Nuevas tecnologías <span class="arrow-mobile">›</span></a>
+                        <div class="mega-menu menu-tecnologias">
+                            <div class="tech-grid">
+                                <a href="/productos/ordeno/sistemas-y-repuestos/global-flow-control/index.html" class="tech-card" style="text-decoration: none; color: inherit;">
+                                    <img src="/img/tecnologia/global-flow-control-rodeg-portada.webp" alt="Global Flow Control">
+                                    <div class="tech-card-overlay">
+                                        <h4>Global Flow Control</h4>
+                                        <p>Medición de leche: Litros, temperatura y alertas por vaca.</p>
+                                    </div>
+                                </a>
+                                <div class="tech-card">
+                                    <a href="/productos/nuevas-tecnologias/smart-ear-tag/index.html">
+                                        <img src="/img/tecnologia/smart-ear-tag.webp" alt="Smart Ear Tag">
+                                        <div class="tech-card-overlay">
+                                            <h4>Smart Ear Tag</h4>
+                                            <p>Identificación y monitoreo animal: Celo, rumia y salud.</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <a href="/productos/alimentacion-terneros/taxi-autopropulsado/index.html" class="tech-card" style="text-decoration: none; color: inherit;">
+                                    <img src="/img/tecnologia/taxi-milk-portada-tecnologia-rodeg.webp" alt="Taxi milk">
+                                    <div class="tech-card-overlay">
+                                        <h4>Taxi milk autopropulsado</h4>
+                                        <p>Nuevo diseño, control por PLC.</p>
+                                    </div>
+                                </a>
+                                <a href="/productos/confort-animal/r-fan/index.html" class="tech-card" style="text-decoration: none; color: inherit;">
+                                    <img src="/img/tecnologia/r-fan-portada-rodeg.webp" alt="Ventiladores">
+                                    <div class="tech-card-overlay">
+                                        <h4>Ventiladores R-FAN</h4>
+                                        <p>Línea nueva, mayor caudal.</p>
+                                    </div>
+                                </a>
+                                <div class="tech-card">
+                                    <img src="/img/tecnologia/sala-rotativa.webp" alt="Salas rotativas">
+                                    <div class="tech-card-overlay">
+                                        <h4>Salas rotativas</h4>
+                                        <p>Para tambos de gran escala.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+    
+                    <li class="nav-item">
+                        <a href="/nosotros.html" class="nav-link">Sobre Rodeg</a>
+                    </li>
+            
+                    <li class="nav-item">
+                        <!-- ¡ACÁ ESTÁ EL CAMBIO! -->
+                        <a href="/actualidad/" class="nav-link">Actualidad</a>
+                    </li>
+                    
+                    <li class="nav-item mobile-only-item">
+                        <a href="/contacto.html" class="btn btn-blue contact-btn-mobile">Contactar</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    
+        <div class="header-actions">
+            <div class="search-pill">
+                <input type="text" placeholder="Buscar..." class="search-input">
+                <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+            </div>
+            
+            <div class="lang-selector" style="display: none;">
+                <img src="https://flagcdn.com/w20/ar.png" alt="ES" width="20"> 
+                <span class="lang-text">ES</span>
+            </div>
+    
+            <div class="inquiry-wrapper">
+                <button class="cart-btn-global" id="open-cart-btn">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                        <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                    </svg>
+                    <span class="cart-btn-text">Mi lista</span> 
+                    <span class="cart-badge" id="cart-count">0</span>
+                </button>
+    
+                <div id="cart-popup-alert" class="cart-popup-alert">
+                    Se ha agregado un producto a tu lista
+                </div>
+    
+                <div class="cart-panel" id="cart-panel">
+                    <div class="cart-panel-header">
+                        <h3>Tu lista de consulta</h3>
+                        <button class="close-cart" id="close-cart-btn">×</button>
+                    </div>
+                    
+                    <div id="cart-items" class="cart-items">
+                        <p class="cart-empty">Todavía no agregaste productos.</p>
+                    </div>
+    
+                    <form id="inquiry-form" class="inquiry-form">
+                        <p class="form-title">Dejanos tus datos para cotizar:</p>
+                        <input type="text" id="inq-name" placeholder="Nombre completo *" required>
+                        <input type="email" id="inq-email" placeholder="Email *" required>
+                        <input type="tel" id="inq-phone" placeholder="Teléfono / WhatsApp *" required>
+                        
+                        <button type="submit" class="btn btn-orange btn-full" id="btn-whatsapp">Consultar por WhatsApp</button>
+                        <button type="button" class="btn btn-blue btn-full" id="btn-mail" style="margin-top: 8px;">Consultar por correo</button>
+                    </form>
+                </div>
+            </div>
+    
+            <a href="/contacto.html" class="btn btn-blue contact-btn-desktop">Contactar</a>
+        </div>
+    </header>
+
+    <!-- ================= CONTENIDO DEL BLOG (Acá inyecta Astro) ================= -->
+    <main class="min-h-screen">
+        <slot /> 
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                
+                <div class="footer-col brand-col">
+                    <a href="/" class="footer-logo">
+                        <img src="/img/global/logo-rodeg-blanco-y-naranja.png" alt="Rodeg logo" class="logo-rodeg-cambiante">
+                    </a>
+                    <p class="footer-tagline">Tecnología pensada para el tambo argentino. 33 años acompañando al productor lechero.</p>
+                    <div class="footer-socials">
+                        <a href="https://www.facebook.com/RodegSA/?locale=es_LA" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/></svg></a>
+                        <a href="https://www.instagram.com/rodegsa?igsh=dmZldmpnajFocnVm" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2zm-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6zm9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25zM12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/></svg></a>
+                        <a href="https://www.youtube.com/channel/UCSuBkkTIfzufCKrcdkw4EtQ" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M21.58 7.19c-.23-.86-.91-1.54-1.77-1.77C18.25 5 12 5 12 5s-6.25 0-7.81.42c-.86.23-1.54.91-1.77 1.77C2 8.75 2 12 2 12s0 3.25.42 4.81c.23.86.91 1.54 1.77 1.77C5.75 19 12 19 12 19s6.25 0 7.81-.42c.86-.23 1.54-.91 1.77-1.77C22 15.25 22 12 22 12s0-3.25-.42-4.81zM10 15V9l5.2 3-5.2 3z"/></svg></a>
+                    </div>
+                </div>
+    
+                <div class="footer-col">
+                    <h4>Navegación</h4>
+                    <ul class="footer-links">
+                        <li><a href="/categorias.html">Soluciones para el tambo</a></li>
+                        <li><a href="productos/nuevas-tecnologias/index.html">Nuevas tecnologías</a></li>
+                        <li><a href="/nosotros.html">Sobre Rodeg</a></li>
+                        <li><a href="/actualidad-y-novedades.html">Actualidad y Novedades</a></li>
+                        <li><a href="/distribuidores.html">Distribuidores</a></li>
+                    </ul>
+                </div>
+    
+                <div class="footer-col">
+                    <h4>Soluciones destacadas</h4>
+                    <ul class="footer-links">
+                        <li><a href="/productos/ordeno/equipos-completos/index.html">Sistemas de ordeño</a></li>
+                        <li><a href="/productos/bretes/index.html">Bretes para sala de ordeño</a></li>
+                        <li><a href="/productos/manejo-y-corrales-de-rodeo/index.html">Manejo y corrales de rodeo</a></li>
+                        <li><a href="/productos/enfriadores-de-leche/index.html">Enfriado de leche</a></li>
+                        <li><a href="/productos/alimentacion-ordeno/index.html">Sistemas de alimentación</a></li>
+                        <li><a href="/productos/alimentacion-terneros/index.html">Alimentación de terneros</a></li>
+                        <li><a href="/productos/confort-animal/index.html">Confort animal</a></li>
+                        <li><a href="/productos/pasteurizadores/index.html">Pasteurizadores</a></li>
+                    </ul>
+                </div>
+    
+                <div class="footer-col contact-col">
+                    <h4>Contacto</h4>
+                    <ul class="footer-contact-info">
+                        <li>
+                            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
+                            <span>San Juan y Ruta 13, CP 2535<br>El Trébol (Sta. Fe) Argentina</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24"><path d="M20 15.5c-1.25 0-2.45-.2-3.57-.57-.35-.11-.74-.03-1.02.24l-2.2 2.2a15.045 15.045 0 0 1-6.59-6.59l2.2-2.21c.28-.26.36-.65.25-1C8.7 6.45 8.5 5.25 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1zM19 12h2a9 9 0 0 0-9-9v2c3.87 0 7 3.13 7 7zm-4 0h2c0-2.76-2.24-5-5-5v2c1.66 0 3 1.34 3 3z"/></svg>
+                            <span>Tel: +54 (03401) 421075 / 420708<br>Fax: +54 (03401) 420591</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                            <a href="mailto:ventas@rodeg.com.ar" class="contact-email">ventas@rodeg.com.ar</a>
+                        </li>
+                    </ul>
+                </div>
+    
+            </div>
+        </div>
+    
+        <div class="footer-bottom">
+            <div class="footer-container bottom-flex">
+                <p>&copy; 2026 RODEG. Todos los derechos reservados | Desarrollado por <a href="https://kayso.com.ar" target="_blank" class="agency-link">KA&SO</a></p>
+                <div class="footer-legal">
+                    <a href="#">Aviso Legal</a>
+                    <a href="#">Política de Privacidad</a>
+                    <a href="#">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ================= JAVASCRIPT DEL MENÚ ================= -->
+    <script>
+        // Funciones adaptadas de tu header.js para que corran nativamente en Astro
+        function initMegaMenu() {
+            const catButtons = document.querySelectorAll('.mega-cat-btn');
+            const megaPanels = document.querySelectorAll('.mega-panel');
+        
+            catButtons.forEach(btn => {
+                btn.addEventListener('mouseenter', () => {
+                    if (window.innerWidth <= 990) return;
+                    catButtons.forEach(b => b.classList.remove('active'));
+                    megaPanels.forEach(p => p.classList.remove('active'));
+                    btn.classList.add('active');
+                    const targetPanel = document.getElementById(btn.getAttribute('data-target'));
+                    if (targetPanel) targetPanel.classList.add('active');
+                });
+            });
+        
+            const subcatButtons = document.querySelectorAll('.mega-subcat-btn');
+            subcatButtons.forEach(btn => {
+                btn.addEventListener('mouseenter', () => {
+                    if (window.innerWidth <= 990) return;
+                    const parentPanel = btn.closest('.mega-panel');
+                    if (!parentPanel) return;
+                    parentPanel.querySelectorAll('.mega-subcat-btn').forEach(b => b.classList.remove('active'));
+                    parentPanel.querySelectorAll('.mega-list').forEach(l => l.classList.remove('active'));
+                    btn.classList.add('active');
+                    const targetList = document.getElementById(btn.getAttribute('data-target'));
+                    if (targetList) targetList.classList.add('active');
+                });
+            });
+        }
+        
+        function initMobileMenu() {
+            const hamburgerBtn = document.getElementById('hamburger-btn');
+            const headerContent = document.getElementById('header-content');
+            const backBar = document.getElementById('mobile-back-bar');
+            const backText = document.getElementById('back-text');
+            const btnBack = document.getElementById('btn-back');
+            
+            let currentLevel = 0; 
+            let activeMacroItem = null;
+            let activePanel = null;
+        
+            const resetToLevel0 = () => {
+                currentLevel = 0;
+                activeMacroItem = null;
+                activePanel = null;
+                document.querySelectorAll('.hidden-by-level').forEach(el => el.classList.remove('hidden-by-level'));
+                document.querySelectorAll('.is-open').forEach(el => el.classList.remove('is-open'));
+                document.querySelectorAll('.mega-col-1, .mega-col-content, .mega-col-2, .mega-col-3').forEach(el => el.classList.remove('mobile-active-col'));
+                document.querySelectorAll('.mega-panel, .mega-list').forEach(el => el.classList.remove('active'));
+                if (backBar) backBar.classList.remove('show');
+            };
+        
+            if (hamburgerBtn && headerContent) {
+                hamburgerBtn.addEventListener('click', () => {
+                    headerContent.classList.toggle('is-active');
+                    if (!headerContent.classList.contains('is-active')) {
+                        resetToLevel0(); 
+                    }
+                });
+            }
+        
+            document.querySelectorAll('.nav-link').forEach(link => {
+                if (link.textContent.trim().startsWith('Soluciones')) {
+                    link.setAttribute('href', '/categorias.html');
+                }
+                link.addEventListener('click', (e) => {
+                    if (window.innerWidth > 990) return;
+                    const parentItem = link.closest('.nav-item');
+                    const megaMenu = parentItem.querySelector('.mega-menu');
+                    if (megaMenu && currentLevel === 0) {
+                        e.preventDefault();
+                        currentLevel = 1;
+                        activeMacroItem = parentItem;
+                        document.querySelectorAll('.nav-item').forEach(item => {
+                            if (item !== parentItem) item.classList.add('hidden-by-level');
+                        });
+                        link.classList.add('hidden-by-level'); 
+                        parentItem.classList.add('is-open');
+                        megaMenu.querySelector('.mega-col-1').classList.add('mobile-active-col');
+                        backText.textContent = 'Menú principal';
+                        backBar.classList.add('show');
+                        headerContent.scrollTo(0, 0);
+                    }
+                });
+            });
+        
+            document.querySelectorAll('.mega-cat-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    if (window.innerWidth > 990) return;
+                    e.preventDefault();
+                    currentLevel = 2;
+                    const megaMenu = btn.closest('.mega-menu');
+                    megaMenu.querySelector('.mega-col-1').classList.remove('mobile-active-col');
+                    megaMenu.querySelector('.mega-col-content').classList.add('mobile-active-col');
+                    activePanel = document.getElementById(btn.getAttribute('data-target'));
+                    if (activePanel) {
+                        activePanel.classList.add('active');
+                        activePanel.querySelector('.mega-col-2').classList.add('mobile-active-col');
+                        activePanel.querySelector('.mega-col-3').classList.remove('mobile-active-col');
+                    }
+                    backText.textContent = 'Soluciones';
+                    headerContent.scrollTo(0, 0);
+                });
+            });
+        
+            document.querySelectorAll('.mega-subcat-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    if (window.innerWidth > 990) return;
+                    e.preventDefault();
+                    currentLevel = 3;
+                    if (activePanel) {
+                        activePanel.querySelector('.mega-col-2').classList.remove('mobile-active-col');
+                        activePanel.querySelector('.mega-col-3').classList.add('mobile-active-col');
+                        activePanel.querySelectorAll('.mega-list').forEach(l => l.classList.remove('active'));
+                        const targetList = document.getElementById(btn.getAttribute('data-target'));
+                        if (targetList) targetList.classList.add('active');
+                    }
+                    const catName = activePanel ? document.querySelector(`.mega-cat-btn[data-target="${activePanel.id}"]`).textContent.replace('›', '').trim() : 'Volver';
+                    backText.textContent = catName;
+                    headerContent.scrollTo(0, 0);
+                });
+            });
+        
+            if (btnBack) {
+                btnBack.addEventListener('click', () => {
+                    if (currentLevel === 3) {
+                        currentLevel = 2;
+                        if (activePanel) {
+                            activePanel.querySelector('.mega-col-3').classList.remove('mobile-active-col');
+                            activePanel.querySelector('.mega-col-2').classList.add('mobile-active-col');
+                        }
+                        backText.textContent = 'Soluciones';
+                    } else if (currentLevel === 2) {
+                        currentLevel = 1;
+                        const megaMenu = activeMacroItem.querySelector('.mega-menu');
+                        megaMenu.querySelector('.mega-col-content').classList.remove('mobile-active-col');
+                        if (activePanel) activePanel.classList.remove('active');
+                        megaMenu.querySelector('.mega-col-1').classList.add('mobile-active-col');
+                        backText.textContent = 'Menú principal';
+                    } else if (currentLevel === 1) {
+                        resetToLevel0();
+                    }
+                });
+            }
+        }
+        
+        // Ejecutar todo cuando la página cargue
+        document.addEventListener('DOMContentLoaded', () => {
+            initMegaMenu();
+            initMobileMenu();
+        });
+    </script>
+</body>
+</html>

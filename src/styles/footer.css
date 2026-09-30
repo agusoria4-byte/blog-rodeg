@@ -1,0 +1,227 @@
+/* ================= FOOTER B2B CORPORATIVO PREMIUM ================= */
+.site-footer {
+    background-color: #0c185c; /* Azul oscuro corporativo real (sin tonos morados) */
+    color: #ffffff; /* Texto general del cuerpo en blanco */
+    padding-top: 5rem;
+    font-family: 'Roboto', sans-serif;
+}
+
+.footer-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 4%;
+}
+
+/* Grilla principal */
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr 1.2fr;
+    gap: 3rem;
+    padding-bottom: 4rem;
+}
+
+/* Títulos de las columnas (Navegación, Soluciones, Contacto) */
+.footer-col h4 {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    color: #ffffff; /* Forzado a Blanco Puro */
+    position: relative;
+    padding-bottom: 10px;
+}
+
+/* --- OPCIONES DE COLOR PARA EL LOGO RODEG --- */
+.logo-rodeg-cambiante {
+    height: 20px;
+    width: auto;
+    margin-bottom: 1.5rem;
+    
+    /* [OPCIÓN A] DEJAR EN BLANCO: Descomentá la línea de abajo si querés el logo blanco */
+    /* filter: brightness(0) invert(1); */
+
+    /* [OPCIÓN B] DEJAR EN NARANJA: Descomentá las dos líneas de abajo si querés forzarlo a naranja mediante código */
+    /* filter: brightness(0) saturate(100%) invert(56%) sepia(85%) saturate(1900%) hue-rotate(360deg) brightness(102%) contrast(106%); */
+}
+
+.footer-tagline {
+    color: #ffffff; /* Eslogan en blanco completo para óptima lectura */
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    max-width: 250px;
+}
+
+/* Redes Sociales */
+.footer-socials {
+    display: flex;
+    gap: 15px;
+}
+
+.footer-socials a svg {
+    width: 24px;
+    height: 24px;
+    fill: #ff6a00; /* Emojis/Íconos sociales en Naranja */
+    transition: fill 0.3s ease, transform 0.3s ease;
+}
+
+.footer-socials a:hover svg {
+    fill: #ff8533; /* Naranja un toque más claro en hover */
+    transform: translateY(-3px);
+}
+
+/* Enlaces (Columnas de Navegación y Soluciones Destacadas) */
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 0.8rem;
+}
+
+.footer-links a {
+    color: #ffffff; 
+    font-size: 0.95rem;
+    font-weight: var(--font-light); /* <-- AGREGAR ESTA LÍNEA */
+    text-decoration: none;
+    transition: color 0.3s ease, padding-left 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #ff6a00; /* Se vuelven naranjas al pasar el mouse */
+    padding-left: 5px;
+}
+
+/* Bloque de Contacto */
+.footer-contact-info {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-contact-info li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 1.2rem;
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-weight: var(--font-light); /* <-- AGREGAR ESTA LÍNEA */
+    line-height: 1.5;
+}
+
+.footer-contact-info svg {
+    width: 20px;
+    height: 20px;
+    fill: #ff6a00; /* Emojis/Íconos de contacto en Naranja */
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+/* Enlace específico del email de ventas */
+.footer-contact-info a.contact-email {
+    color: #ffffff; 
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-weight: var(--font-light); /* <-- Acá decía 500, cambialo a light */
+}
+
+.footer-contact-info a.contact-email:hover {
+    color: #ff6a00; /* Email cambia a naranja en hover */
+}
+
+/* ================= BARRA INFERIOR (BOTTOM BAR COMPLETAMENTE BLANCA) ================= */
+.footer-bottom {
+    background-color: #ffffff; /* Fondo blanco sutil sugerido para el cierre */
+    padding: 1.5rem 0;
+    border-top: 1px solid #e2e8f0; /* Línea de separación muy fina */
+}
+
+.bottom-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.footer-bottom p {
+    color: #64748b; /* Gris intermedio que no molesta ni compite con el resto */
+    font-size: 0.85rem;
+    margin: 0;
+}
+
+.agency-link {
+    color: #09162e;
+    font-weight: var(--font-light); /* <-- Acá decía 500, cambialo a light */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.agency-link:hover {
+    color: #ff6a00; /* Cambia a naranja en hover */
+}
+
+/* Enlaces Legales (Aviso, Privacidad, Cookies) */
+.footer-legal {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.footer-legal a {
+    color: #64748b; /* Gris que no molesta */
+    font-size: 0.85rem;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-legal a:hover {
+    color: #ff6a00; /* Cambia a naranja en hover */
+}
+
+/* ================= RESPONSIVE FOOTER ================= */
+@media (max-width: 900px) {
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3rem;
+    }
+    .bottom-flex {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 600px) {
+    .site-footer { padding-top: 4rem; }
+    
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 2.8rem;
+        text-align: center;
+    }
+
+    /* Agregá esto para corregir la columna del logo y tagline */
+    .brand-col {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Centra el logo y los iconos */
+        text-align: center;  /* Asegura que el texto se centre */
+    }
+
+    /* Le damos un toque de aire al párrafo para que respire en el celu */
+    .footer-tagline {
+        max-width: 320px;    /* Evita que el texto toque los bordes de la pantalla */
+        margin: 1rem auto;   /* Lo separa del logo y lo centra con los márgenes */
+    }
+
+    .footer-links, .footer-contact-info {
+        text-align: left;
+        display: inline-block;
+    }
+    
+    .footer-socials { 
+        justify-content: center; 
+        display: flex;       /* Nos aseguramos de que responda al justify-content */
+        width: 100%; 
+    }
+    
+    .bottom-flex { flex-direction: column; }
+}

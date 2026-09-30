@@ -1,17 +1,73 @@
 ---
+import Layout from '../layouts/Layout.astro';
 
+const archivos = import.meta.glob('../../noticias/actualidad/*.mdx', { eager: true });
+const noticias = Object.values(archivos).sort((a: any, b: any) => {
+  return new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf();
+});
+
+const getSlug = (ruta: string) => ruta.split('/').pop()?.split('.')[0];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Actualidad y Novedades - Rodeg">
+  <div class="max-w-[1400px] mx-auto px-6 py-16">
+    
+    <!-- Encabezado con más aire -->
+    <div class="mb-14 border-b border-gray-200 pb-6 text-center md:text-left">
+      <h1 class="text-4xl md:text-5xl font-medium text-[#172dad] mb-4">Actualidad y Novedades</h1>
+      <p class="text-lg text-gray-600 font-light">Enterate de las últimas noticias, tecnologías y equipos para el tambo.</p>
+    </div>
+
+    <!-- Grilla calcada a tu catálogo -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {noticias.map((noticia: any) => {
+        const slug = getSlug(noticia.file);
+        // Formato de fecha corto tipo 16/09/2026
+        const fechaCorta = new Date(noticia.frontmatter.date).toLocaleDateString('es-AR', { day: '2-digit', month: '2-digit', year: 'numeric', timeZone: 'UTC' });
+
+        return (
+          <a href={`/actualidad/${slug}`} class="group bg-white border border-gray-200 rounded-lg overflow-hidden flex flex-col transition-all duration-300 hover:shadow-xl hover:border-[#172dad]">
+            
+            {/* Imagen Cuadrada (1:1) con fondo clarito como en los productos */}
+            <div class="w-full aspect-square overflow-hidden bg-[#fdfdfd] flex items-center justify-center p-4">
+              {noticia.frontmatter.image ? (
+                <img 
+                  src={noticia.frontmatter.image} 
+                  alt={noticia.frontmatter.title} 
+                  class="w-full h-full object-cover rounded transition-transform duration-500 group-hover:scale-105"
+                />
+              ) : (
+                <div class="text-gray-400 font-light text-sm">Sin imagen</div>
+              )}
+            </div>
+
+            {/* Info calcada a tu product-info */}
+            <div class="p-6 flex flex-col flex-grow">
+              <p class="text-xs text-gray-500 mb-2 font-medium">{fechaCorta}</p>
+              
+              <h3 class="text-[1.15rem] font-semibold text-[#172dad] mb-2 leading-tight">
+                {noticia.frontmatter.title}
+              </h3>
+              
+              {/* El Copete / Slogan (Gris oscuro) */}
+              <p class="text-[0.9rem] text-[#292929] mb-6 line-clamp-3 flex-grow">
+                {noticia.frontmatter.description || "Hacé clic para leer todas las novedades y detalles de este artículo."}
+              </p>
+              
+              {/* Botones estilo catálogo (Negro que pasa a azul/naranja) */}
+              <div class="mt-auto flex items-center gap-2">
+                <span class="flex-1 text-center bg-[#111] text-white py-2 px-3 rounded-md text-[0.85rem] font-medium transition-colors group-hover:bg-[#172dad]">
+                  Leer artículo
+                </span>
+                <div class="w-[42px] h-[42px] rounded-full bg-[#111] text-white flex items-center justify-center text-xl font-light transition-colors group-hover:bg-[#f76507]">
+                  +
+                </div>
+              </div>
+            </div>
+            
+          </a>
+        )
+      })}
+    </div>
+  </div>
+</Layout>
