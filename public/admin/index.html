@@ -1,10 +1,28 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Panel de Administración - Rodeg</title>
+    <script>
+      // El panel tiene que abrirse en el sitio del BLOG (donde están Netlify Identity y Git Gateway),
+      // no a través del proxy de rodegweb.netlify.app/actualidad/.
+      (function () {
+        var BLOG_ADMIN = 'https://astonishing-creponne-cba6db.netlify.app/admin/';
+        var host = location.hostname;
+        var esLocal = host === 'localhost' || host === '127.0.0.1';
+        var esBlog = host === 'astonishing-creponne-cba6db.netlify.app';
+        if (!esLocal && !esBlog) {
+          location.replace(BLOG_ADMIN + location.hash);
+          return;
+        }
+        // Decap busca "config.yml" relativo a la URL: sin la barra final lo busca en la carpeta equivocada (404).
+        if (!/\/$/.test(location.pathname)) {
+          location.replace(location.pathname + '/' + location.search + location.hash);
+        }
+      })();
+    </script>
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   </head>
   <body>
     <!-- Ponemos el script al final para que espere a que la página exista -->
