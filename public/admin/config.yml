@@ -5,8 +5,8 @@ backend:
 local_backend: true
 
 # 2. ¿Dónde se guardan las FOTOS NUEVAS que suba tu equipo?
-media_folder: "public/img/blog"
-public_folder: "/img/blog"
+media_folder: "/actualidad/img/blog"
+public_folder: "actualidad/img/blog"
 
 # 3. ¿Qué campos tiene que llenar el redactor?
 collections:
