@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { urlImagen } from '../utils/imagen';
 
 // RUTA CORREGIDA CON UN SOLO ../
 const archivos = import.meta.glob('../noticias/actualidad/*.mdx', { eager: true });
@@ -36,7 +37,7 @@ const getSlug = (ruta: string) => ruta.split('/').pop()?.split('.')[0];
             
             <div class="blog-image-wrapper">
               {noticia.frontmatter.image ? (
-                <img src={noticia.frontmatter.image} alt={noticia.frontmatter.title} />
+                <img src={urlImagen(noticia.frontmatter.image)} alt={noticia.frontmatter.title} />
               ) : (
                 <div class="blog-no-image">Sin imagen</div>
               )}

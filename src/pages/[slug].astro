@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import TarjetaProducto from '../components/TarjetaProducto.astro';
 import ImagenNoticia from '../components/ImagenNoticia.astro';
+import { urlImagen } from '../utils/imagen';
 
 export async function getStaticPaths() {
   // RUTA CORREGIDA CON UN SOLO ../
@@ -39,7 +40,7 @@ const fechaLinda = new Date(frontmatter.date).toLocaleDateString('es-AR', {
 
     {frontmatter.image && (
         <div class="article-hero-img">
-            <img src={frontmatter.image} alt={frontmatter.title} />
+            <img src={urlImagen(frontmatter.image)} alt={frontmatter.title} />
         </div>
     )}
 
