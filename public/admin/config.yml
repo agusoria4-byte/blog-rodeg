@@ -1,6 +1,7 @@
 # 1. Configuración local (para que lo puedas probar en tu compu ahora)
 backend:
   name: git-gateway
+  branch: main
 local_backend: true
 
 # 2. ¿Dónde se guardan las FOTOS NUEVAS que suba tu equipo?
